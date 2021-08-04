@@ -16,10 +16,15 @@ namespace App\Controller;
 use App\Model\Article;
 use Hyperf\HttpServer\Request;
 use Hyperf\Utils\Str;
+use Psr\Http\Message\ResponseInterface;
 
 class ArticleController extends AbstractController
 {
-    public function index(Request $request)
+    /**
+     * @param  Request  $request
+     * @return ResponseInterface
+     */
+    public function index(Request $request): ResponseInterface
     {
         $query = $request->input("query", "");
         if ($query) {
@@ -31,7 +36,7 @@ class ArticleController extends AbstractController
         return responseApiData($this->response, $result);
     }
 
-    public function create(Request $request): \Psr\Http\Message\ResponseInterface
+    public function create(Request $request): ResponseInterface
     {
         $title = $request->input("title", Str::random(20));
         $content = $request->input("content", Str::random(100));

@@ -18,6 +18,7 @@ use Hyperf\Di\Annotation\Inject;
 use App\Services\IndexService;
 use Hyperf\HttpMessage\Exception\NotFoundHttpException;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 
 class UserController extends AbstractController
@@ -31,9 +32,9 @@ class UserController extends AbstractController
 
     /**
      * @param  int  $id
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
-    public function index(int $id):\Psr\Http\Message\ResponseInterface
+    public function index(int $id): ResponseInterface
     {
         $user = $this->service->getUser($id);
         if (!$user) {
@@ -44,9 +45,9 @@ class UserController extends AbstractController
 
     /**
      * @param  RequestInterface  $request
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
-    public function update(RequestInterface $request): \Psr\Http\Message\ResponseInterface
+    public function update(RequestInterface $request): ResponseInterface
     {
 
         $user_name=$request->input("user_name","lee");
