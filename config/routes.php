@@ -20,10 +20,11 @@ Router::get('/favicon.ico', function () {
 
 Router::addGroup('/v1', function () {
 
-
+    Router::get('/', 'App\Controller\IndexController@index');
     Router::get('/user/{id}', 'App\Controller\UserController@index');
     Router::get('/user', 'App\Controller\UserController@update');
 
 
-    Router::get('/', 'App\Controller\IndexController@index');
+    Router::get('/article/index', 'App\Controller\ArticleController@index');
+    Router::get('/article', 'App\Controller\ArticleController@create');
 });

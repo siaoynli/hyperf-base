@@ -21,7 +21,7 @@
         "hyperf/constants": "~2.2.0",
         "hyperf/database": "~2.2.0",
         "hyperf/db-connection": "~2.2.0",
-        "hyperf/elasticsearch": "~2.2.0",
+        "hyperf/elasticsearch": "^2.2",
         "hyperf/framework": "~2.2.0",
         "hyperf/guzzle": "~2.2.0",
         "hyperf/http-server": "~2.2.0",
@@ -30,6 +30,7 @@
         "hyperf/model-cache": "~2.2.0",
         "hyperf/process": "~2.2.0",
         "hyperf/redis": "~2.2.0",
+        "hyperf/scout": "^2.2",
         "hyperf/session": "^2.2",
         "hyperf/validation": "^2.2"
     },

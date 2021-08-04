@@ -50,9 +50,6 @@ class UserController extends AbstractController
         if($user_name) {
             $user= User::where("id",1)->first();
             $user->user_name=$user_name;
-            if($user->isDirty()) {
-                $this->service->clearCache($user->id);
-            }
             $user->save();
         }
 
