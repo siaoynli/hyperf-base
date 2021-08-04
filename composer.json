@@ -30,6 +30,7 @@
         "hyperf/model-cache": "~2.2.0",
         "hyperf/process": "~2.2.0",
         "hyperf/redis": "~2.2.0",
+        "hyperf/resource": "^2.2",
         "hyperf/scout": "^2.2",
         "hyperf/session": "^2.2",
         "hyperf/validation": "^2.2"

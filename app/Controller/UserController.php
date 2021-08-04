@@ -33,7 +33,7 @@ class UserController extends AbstractController
      * @param  int  $id
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function index(int $id)
+    public function index(int $id):\Psr\Http\Message\ResponseInterface
     {
         $user = $this->service->getUser($id);
         if (!$user) {
@@ -42,7 +42,11 @@ class UserController extends AbstractController
         return responseApiData($this->response, [$user]);
     }
 
-    public function update(RequestInterface $request)
+    /**
+     * @param  RequestInterface  $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function update(RequestInterface $request): \Psr\Http\Message\ResponseInterface
     {
 
         $user_name=$request->input("user_name","lee");
