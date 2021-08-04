@@ -32,12 +32,17 @@ class ApiExceptionHandler extends ExceptionHandler
 
     public function handle(Throwable $throwable, ResponseInterface $response): ResponseInterface
     {
+
+//        if (! $response->hasHeader('content-type')) {
+//            $response = $response->withAddedHeader('content-type', 'text/plain; charset=utf-8');
+//        }
+
         if ($throwable instanceof NotFoundHttpException) {
             $this->logger->info(sprintf('[路由错误] %s File: %s Line:%s', $throwable->getMessage(),
                 $throwable->getFile(), $throwable->getLine()));
             // 阻止异常冒泡
             $this->stopPropagation();
-            return responseApiException($throwable->getMessage(), $throwable->getCode(), $response, 404);
+            return responseApiMessage( $response,$throwable->getMessage(), $throwable->getCode(), 404);
         }
         return $response;
     }

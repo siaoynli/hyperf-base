@@ -11,11 +11,13 @@ declare(strict_types=1);
  */
 
 use App\Middleware\CorsMiddleware;
+use App\Middleware\LoggerMiddleware;
 use Hyperf\Validation\Middleware\ValidationMiddleware;
 
 return [
     'http' => [
-        ValidationMiddleware::class,
+        LoggerMiddleware::class,
         CorsMiddleware::class,
+        ValidationMiddleware::class,
     ],
 ];

@@ -4,20 +4,11 @@ declare(strict_types=1);
 
 namespace App\Request;
 
-use Hyperf\Validation\Request\FormRequest;
-
-class FooRequest extends FormRequest
+class FooRequest extends BaseRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     /**
-     * Get the validation rules that apply to the request.
+     * @return string[]
      */
     public function rules(): array
     {
@@ -26,6 +17,9 @@ class FooRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return string[]
+     */
     public function attributes(): array
     {
         return [

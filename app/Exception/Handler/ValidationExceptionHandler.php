@@ -31,10 +31,7 @@ class ValidationExceptionHandler extends ExceptionHandler
             // 阻止异常冒泡
             $this->stopPropagation();
 
-            if (!$response->hasHeader('content-type')) {
-                $response = $response->withAddedHeader('content-type', 'text/plain; charset=utf-8');
-            }
-            return responseApiException($message, $throwable->getCode(), $response, 403);
+            return responseApiMessage($response, $message, $throwable->getCode(), 403);
         }
 
         return $response;

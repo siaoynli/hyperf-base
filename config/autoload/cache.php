@@ -13,6 +13,10 @@ return [
     'default' => [
         'driver' => Hyperf\Cache\Driver\RedisDriver::class,
         'packer' => Hyperf\Utils\Packer\PhpSerializerPacker::class,
-        'prefix' => 'c:',
+        'prefix' => env('APP_NAME', 'hyperf').":",
+    ],
+    'co' => [
+        'driver' => Hyperf\Cache\Driver\CoroutineMemoryDriver::class,
+        'packer' => Hyperf\Utils\Packer\PhpSerializerPacker::class,
     ],
 ];

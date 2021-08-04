@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-use Hyperf\ExceptionHandler\ExceptionHandler;
-use Hyperf\HttpMessage\Stream\SwooleStream;
+
 use Psr\Http\Message\ResponseInterface;
 
 if (!function_exists("ping")) {
@@ -13,14 +12,32 @@ if (!function_exists("ping")) {
     }
 }
 
-if (!function_exists("responseApiException")) {
-    function responseApiException(string $message, int $code, ResponseInterface $response,int $httpStatus=200): ResponseInterface
-    {
-        $data = json_encode([
+if (!function_exists("responseApiMessage")) {
+    function responseApiMessage(
+        ResponseInterface $response,
+        string $message,
+        int $code = 1,
+        int $httpStatus = 200
+    ): ResponseInterface {
+        return $response->json([
             'code' => $code,
             'message' => $message,
-        ], JSON_UNESCAPED_UNICODE);
+        ])->withStatus($httpStatus);
+    }
+}
 
-        return $response->withStatus($httpStatus)->withBody(new SwooleStream($data));
+
+if (!function_exists("responseApiData")) {
+    function responseApiData(
+        ResponseInterface $response,
+        array $data,
+        int $code = 1,
+        int $httpStatus = 200
+    ): ResponseInterface {
+
+        return $response->json([
+            'code' => $code,
+            'data' => $data,
+        ])->withStatus($httpStatus);
     }
 }
