@@ -20,7 +20,7 @@ class IndexService
      * @param  int  $id
      * @return array|null
      */
-    public function getUser(int $id)
+    public function getUser(int $id): ?array
     {
         return $this->cache->getUser($id);
     }
